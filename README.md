@@ -18,7 +18,7 @@ api/src/config/database.yml
 -  host: localhost
 +  username: <%= ENV.fetch('MYSQL_USER') { 'root' } %>
 +  password: <%= ENV.fetch('MYSQL_PASSWORD') { 'password' } %>
-+  host: <%= ENV.fetch('DB_HOSTNAME') { 'db' } %>
++  host: <%= ENV.fetch('MYSQL_CONTAINER_HOSTNAME') { 'db' } %>
  
  development:
    <<: *default
