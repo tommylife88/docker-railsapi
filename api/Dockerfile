@@ -19,7 +19,7 @@ WORKDIR ${API_ROOT}
 COPY ./src/Gemfile ${API_ROOT}/Gemfile
 COPY ./src/Gemfile.lock ${API_ROOT}/Gemfile.lock
 RUN bundle install
-COPY . ${API_ROOT}
+COPY ./src ${API_ROOT}
 
 COPY ./src/entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
