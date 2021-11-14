@@ -24,11 +24,37 @@ api/src/config/database.yml
    <<: *default
 -  database: myapi_development
 +  database: <%= ENV.fetch('MYSQL_DATABASE') { 'app_development' } %>
+
+ # Warning: The database defined as "test" will be erased and
+ # re-generated from your development database when you run "rake".
+ # Do not set this db to the same as development or production.
+-test:
+-  <<: *default
+-  database: myapi_test
++#test:
++#  <<: *default
++#  database: myapi_test
+ 
+ # As with config/credentials.yml, you never want to store sensitive information,
+ # like your database password, in your source code. If your source code is
+@@ -48,8 +48,8 @@ test:
+ # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
+ # for a full overview on how database connection configuration can be specified.
+ #
+-production:
+-  <<: *default
+-  database: myapi_production
+-  username: myapi
+-  password: <%= ENV['MYAPI_DATABASE_PASSWORD'] %>
++#production:
++#  <<: *default
++#  database: myapi_production
++#  username: myapi
++#  password: <%= ENV['MYAPI_DATABASE_PASSWORD'] %>
 ```
 
 ```bash
-docker-compose build
-docker-compose up
+docker-compose up --build
 ```
 
 Rails:  
@@ -36,3 +62,12 @@ http://localhost:13000
 
 phpMyaAmin:  
 http://localhost:10081
+
+## Sample
+
+```bash
+docker-compose stop
+docker-compose run --rm api bundle exec rails db:create
+docker-compose run --rm api bundle exec rails g scaffold user name:string age:integer
+docker-compose run --rm api bundle exec rails db:migrate
+```
