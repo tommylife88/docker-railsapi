@@ -60,7 +60,6 @@ services:
     volumes:
       - ./api/src:/myapi
     stdin_open: true
-    tty: true
 
 volumes:
   mysql-data:

@@ -3,6 +3,28 @@
 ## Setup
 
 ```bash
+docker-compose up --build
+#Rails:
+# http://localhost:13000
+#phpMyaAmin:
+# http://localhost:10081
+docker-compose stop
+```
+
+## Sample
+
+```bash
+docker-compose stop
+docker-compose run --rm api bundle exec rails db:create
+docker-compose run --rm api bundle exec rails g scaffold user name:string age:integer
+docker-compose run --rm api bundle exec rails db:migrate
+```
+
+## Notes
+
+for setup.
+
+```bash
 docker-compose build
 docker-compose run --rm api bundle exec rails new . --api -d mysql
 # Input "Y"
@@ -55,19 +77,4 @@ api/src/config/database.yml
 
 ```bash
 docker-compose up --build
-```
-
-Rails:  
-http://localhost:13000
-
-phpMyaAmin:  
-http://localhost:10081
-
-## Sample
-
-```bash
-docker-compose stop
-docker-compose run --rm api bundle exec rails db:create
-docker-compose run --rm api bundle exec rails g scaffold user name:string age:integer
-docker-compose run --rm api bundle exec rails db:migrate
 ```

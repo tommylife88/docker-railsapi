@@ -1,0 +1,10 @@
+src/.git
+src/.gitattributes
+src/.gitignore
+
+src/log/*
+src/tmp/*
+!src/log/.keep
+!src/tmp/.keep
+
+src/README.md
